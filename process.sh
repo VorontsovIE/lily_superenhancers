@@ -12,3 +12,9 @@ for i in `seq 1 6`; do
   awk -e '($4=="promoter"){print $0}' -- source_data/enhancers_bed/${i}_h3k27ac.scores.bed > results/genomic_intervals/promoters/promoters_${i}.bed
   awk -e '($4=="enhancer"){print $0}' -- source_data/enhancers_bed/${i}_h3k27ac.scores.bed > results/genomic_intervals/enhancers/enhancers_${i}.bed
 done
+
+# For each cistrome peak calculate number of intersections with enhancers.
+# We store number of peaks which were intersected once, twice (usually ~10% of the former for typical enhancers,
+#   and 0% for superenhancers) etc or not intersected at all.
+ruby num_cistrome_peaks_intersected_cmd.rb | bash
+ruby collect_cistrome_overlap_counts.rb
