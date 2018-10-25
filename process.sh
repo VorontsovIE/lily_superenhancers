@@ -16,5 +16,4 @@ done
 # For each cistrome peak calculate number of intersections with enhancers.
 # We store number of peaks which were intersected once, twice (usually ~10% of the former for typical enhancers,
 #   and 0% for superenhancers) etc or not intersected at all.
-ruby num_cistrome_peaks_intersected_cmd.rb | bash
-ruby collect_cistrome_overlap_counts.rb
+ruby num_cistrome_peaks_intersected.rb
